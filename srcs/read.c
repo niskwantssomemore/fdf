@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 15:49:10 by sazalee           #+#    #+#             */
-/*   Updated: 2019/10/09 16:29:03 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/10/09 19:48:38 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,29 @@ int		ft_getnumber(char *str)
 	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 		result = result * 10 + str[i++] - '0';
 	return (sign * result);
+}
+
+void	reader(t_fdf *fdf, int fd)
+{
+	if (!(fdf->coords = (int **)malloc(sizeof(int *) * fdf->number_lines)))
+		exit(1);
+	while (get_next_line(fd, &(fdf->oneline)) == 1)
+	{
+		fdf->count = 0;
+		fdf->oneline = spacer(fdf->oneline);
+		fdf->splitchar = ft_strsplit(fdf->oneline, ' ');
+		fdf->number_columns = countersplits(splitchar);
+		if (!(fdf->coords[fdf->x] = (int *)malloc(sizeof(int)
+						* fdf->number_columns)))
+			exit(1);
+		while (fdf->splitchar[fdf->y])
+		{
+			fdf->coords[fdf->x][fdf->y] = ft_getnumber(fdf->splitchar[fdf->y]);
+			fdf->y++;
+		}
+		fdf->coords[fdf->x][fdf->y] = '\0';
+		fdf->x++;
+		fdf->y = 0;
+		free(splitchar);
+	}
 }

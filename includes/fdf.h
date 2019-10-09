@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:06:32 by sazalee           #+#    #+#             */
-/*   Updated: 2019/10/09 16:51:15 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/10/09 19:49:56 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void			check_ac(int ac);
 char			*spacer(char *str);
 int				countersplits(char **splitchar);
 int				ft_getnumber(char *str);
+void			manylines_coords(t_fdf *fdf, int fd);
+void			reader(t_fdf *fdf, int fd);
 
 #endif
