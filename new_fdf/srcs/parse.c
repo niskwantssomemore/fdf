@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/12/05 17:35:03 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/12/05 17:36:26 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**str_split(char *field, int countnumb)
 	{
 		if (field[index])
 		{
-			if (!(numb = numbfind(field, index)))
+			if (!(numb = ft_numbfind(field, index)))
 			{
 				ft_freenumbers(numbers, count);
 				return (NULL);
