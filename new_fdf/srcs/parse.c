@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/12/05 17:23:53 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/12/05 17:35:03 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**str_split(char *field, int countnumb)
 		{
 			if (!(numb = numbfind(field, index)))
 			{
-				ft_freenumb(numbers, count);
+				ft_freenumbers(numbers, count);
 				return (NULL);
 			}
 			numbers[count++] = numb;
@@ -110,7 +110,7 @@ char	*ft_numbfind(char *field, int index)
 	return (ft_strdup(temp));
 }
 
-void	ft_freenumberss(char **numbers, int count)
+void	ft_freenumbers(char **numbers, int count)
 {
 	while (count--)
 		ft_strdel(&(numbers[count]));
