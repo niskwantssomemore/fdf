@@ -49,53 +49,36 @@ int		params(char *filebase, int count)
 		else if (cw1 != cw)
 			break ;
 		counter++;
-		//free(field);
 	}
 	cw1 = (cw1 == cw ? cw1 : 0);
 	close(fd);
 	return (count == 1 ? counter : cw1);
 }
 
-void	baseinstruct(char *filebase)
+char	**transport(char *field, int ccolumn, int clines)
 {
-	char	**bfield;
-	char	*field;
-	int		fd;
+	char	**result;
+	int	x;
+	int	y;
+	int	z;
 
-	if ((fd = open(filebase, O_RDONLY)) == -1)
-		return (0);
-	while (get_next_line(fd, &field) > 0)
-	{
-		bfield = str_split(field, countw(field));
-	}
-}
-
-char	**str_split(char *field, int countnumb)
-{
-	char	**numbers;
-	char	*numb;
-	int		count;
-	int		index;
-
-	index = 0;
-	count = 0;
-	if (!(numbers = (char **)ft_memalloc(sizeof(char *) * (countnumb + 1))))
+	x = 0;
+	y = 0;
+	z = 0;
+	if (!(result = (char**)malloc(sizeof(char *) * clines + 1)))
 		return (NULL);
-	while (count < countnumb)
+	while (field[z] != '\0')
 	{
-		if (field[index])
-		{
-			if (!(numb = ft_numbfind(field, index)))
-			{
-				ft_freenumbers(numbers, count);
-				return (NULL);
-			}
-			numbers[count++] = numb;
-			index = ft_strlen(numb) + 2;
-		}
+		if (!(result[x] = (char*)malloc(sizeof(char) * ccolumn + 1)))
+			return (NULL);
+		while (y <= ccolumn)
+			result[x][y++] = field[z++];
+		y = 0;
+		result[x][ccolumn] = '\0';
+		x++;
 	}
-	numbers[count] = NULL;
-	return (numbers);
+	result[x] = NULL;
+	return (result);
 }
 
 char	*ft_numbfind(char *field, int index)
@@ -115,4 +98,29 @@ void	ft_freenumbers(char **numbers, int count)
 	while (count--)
 		ft_strdel(&(numbers[count]));
 	free(*numbers);
+}
+
+void	read(char *filebase, t_info *base)
+{
+	int	fd;
+	int	x;
+	int	y;
+	char	*line;
+	char	**result;
+
+	x = 0;
+	y = 0;
+	fd = open(filebase, O_RDONLY);
+	while (get_next_line(fd, &line) > 0)
+	{
+		result = transport(line, function1, function2);
+
+void	parse(char *filebase, t_info *base)
+{
+	int count;
+
+	initstruct;
+	params x2 ;
+	malloc;
+	read;
 }
