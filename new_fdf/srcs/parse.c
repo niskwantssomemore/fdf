@@ -117,8 +117,22 @@ void	parse(char *filebase, t_info *base)
 {
 	int count;
 
-	initstruct;
-	params x2 ;
-	malloc;
-	read;
+	count = 0;
+	if ((base->mlx = mlx_init()) == (void *)0)
+		error(2);
+	base->scalex = 30;
+	base->scaley = -30;
+	base->posx = 400;
+	base->posy = 400;
+	base->view = 1;
+	base->color = 0xFFFFFF;
+	base->height = params(filebase, 1);
+	base->width = params(filebase, 2);
+	base->map = (t_pnt **)malloc(sizeof(t_pnt *) * base->height);
+	while (count < base->height)
+	{
+		base->map[count] = (t_pnt *)malloc(sizeof(t_pnt) * base->widht);
+		count++;
+	}
+	read(filebase, base);
 }
