@@ -27,3 +27,5 @@ typedef struct	s_info
 	size_t	less;
 	int	color;
 }		t_info;
+
+#endif
