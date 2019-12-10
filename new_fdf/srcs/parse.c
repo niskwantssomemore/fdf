@@ -19,48 +19,63 @@ int		countw(char *format)
 
 	index = 0;
 	counter = 0;
-	while (format[index])
+	while (format[index] != '\0')
 	{
 		if (format[index] == ' ')
 			counter++;
 		index++;
 	}
+	if (counter > 0)
+		counter++;
 	return (counter);
 }
 
 int		params(char *filebase, int count)
 {
-	char	*field;
-	int		fdf;
-	int		counter;
-	int		cw;
-	int		cw1;
+	char		*line;
+	int		fd;
+	int		res1;
+	int		res2;
+	int		temp;
 
-	counter = 0;
+	res1 = 0;
 	if ((fd = open(filebase, O_RDONLY)) == -1)
 		return (0);
-	while (get_next_line(fd, &field) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
-		cw = countw(field);
-		if (!counter)
-			cw1 = cw;
-		else if (cw1 == cw)
-			cw1 = cw;
-		else if (cw1 != cw)
-			break ;
-		counter++;
+		temp = countw(line);
+		if (res1 == 0)
+			res2 = temp;
+		else if (res2 == temp)
+			res2 = temp;
+		else if (res2 != temp)
+			error(1);
+		res1++;
 	}
-	cw1 = (cw1 == cw ? cw1 : 0);
 	close(fd);
-	return (count == 1 ? counter : cw1);
+	return (count == 1 ? res1 : res2);
 }
 
-char	**transport(char *field, int ccolumn, int clines)
+int	countlength(char *field, int z)
+{
+	int count;
+
+	count = 0;
+	while(field[z] != ' ' || field[z] != '\0')
+	{
+		count++;
+		z++;
+	}
+	return (count);
+}
+
+char	**transport(char *field, int clines)
 {
 	char	**result;
 	int	x;
 	int	y;
 	int	z;
+	int	ccolumn;
 
 	x = 0;
 	y = 0;
@@ -69,6 +84,7 @@ char	**transport(char *field, int ccolumn, int clines)
 		return (NULL);
 	while (field[z] != '\0')
 	{
+		ccolumn = countlength(field, z);
 		if (!(result[x] = (char*)malloc(sizeof(char) * ccolumn + 1)))
 			return (NULL);
 		while (y <= ccolumn)
@@ -81,25 +97,6 @@ char	**transport(char *field, int ccolumn, int clines)
 	return (result);
 }
 
-char	*ft_numbfind(char *field, int index)
-{
-	char *temp;
-
-	field = field + index;
-	temp = field;
-	while (*field && (*field != ' '))
-		field++;
-	*field = '\0';
-	return (ft_strdup(temp));
-}
-
-void	ft_freenumbers(char **numbers, int count)
-{
-	while (count--)
-		ft_strdel(&(numbers[count]));
-	free(*numbers);
-}
-
 void	read(char *filebase, t_info *base)
 {
 	int	fd;
@@ -110,10 +107,11 @@ void	read(char *filebase, t_info *base)
 
 	x = 0;
 	y = 0;
-	fd = open(filebase, O_RDONLY);
+	if ((fd = open(filebase, O_RDONLY)) == -1)
+		return (0);
 	while (get_next_line(fd, &line) > 0)
 	{
-		result = transport(line, function1, function2);
+		result = transport(line, countw(line));
 
 void	parse(char *filebase, t_info *base)
 {
