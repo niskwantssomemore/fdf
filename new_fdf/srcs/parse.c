@@ -12,6 +12,14 @@
 
 #include "fdf.h"
 
+unsigned int	ft_abs(int number)
+{
+	unsigned int	numbertwo;
+
+	numbertwo = (number < 0) ? (unsigned int)-number : number;
+	return (numbertwo);
+}
+
 int		countw(char *format)
 {
 	int index;
@@ -39,6 +47,8 @@ int		params(char *filebase, int count)
 	int		temp;
 
 	res1 = 0;
+	res2 = 0;
+	temp = 0;
 	if ((fd = open(filebase, O_RDONLY)) == -1)
 		return (0);
 	while (get_next_line(fd, &line) > 0)
@@ -69,6 +79,11 @@ int	countlength(char *field, int z)
 	return (count);
 }
 
+void	calculatescale(t_info *base)
+{
+
+}
+
 char	**transport(char *field, int clines)
 {
 	char	**result;
@@ -97,26 +112,42 @@ char	**transport(char *field, int clines)
 	return (result);
 }
 
-void	read(char *filebase, t_info *base)
+void	read(char *filebase, t_info *base, int fd, int x)
 {
-	int	fd;
-	int	x;
 	int	y;
 	char	*line;
 	char	**result;
 
-	x = 0;
 	y = 0;
 	if ((fd = open(filebase, O_RDONLY)) == -1)
 		return (0);
 	while (get_next_line(fd, &line) > 0)
 	{
 		result = transport(line, countw(line));
+		while (*result != NULL)
+		{
+			base->map[x][y].z = ft_atoi(*result);
+			FUNCTION(base, x, y, 0);
+			base->map[x][y].zn = base->map[x][y].z;
+			y++;
+			result++;
+		}
+		y = 0;
+		x++;
+	}
+	close(fd);
+	FUNCTION(base, 0 ,0, 1);
+	calculatescale(base);
+}
 
 void	parse(char *filebase, t_info *base)
 {
+	int fd;
 	int count;
+	int x;
 
+	x = 0;
+	fd = 0;
 	count = 0;
 	if ((base->mlx = mlx_init()) == (void *)0)
 		error(2);
@@ -134,5 +165,5 @@ void	parse(char *filebase, t_info *base)
 		base->map[count] = (t_pnt *)malloc(sizeof(t_pnt) * base->widht);
 		count++;
 	}
-	read(filebase, base);
+	read(filebase, base, fd, x);
 }
