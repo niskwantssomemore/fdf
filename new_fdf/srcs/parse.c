@@ -6,37 +6,11 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/12/17 15:58:17 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/12/17 16:53:17 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-unsigned int	ft_abs(int number)
-{
-	unsigned int	numbertwo;
-
-	numbertwo = (number < 0) ? (unsigned int)-number : number;
-	return (numbertwo);
-}
-
-int				countw(char *format)
-{
-	int index;
-	int counter;
-
-	index = 0;
-	counter = 0;
-	while (format[index] != '\0')
-	{
-		if (format[index] == ' ')
-			counter++;
-		index++;
-	}
-	if (counter > 0)
-		counter++;
-	return (counter);
-}
 
 int				params(char *filebase, int count)
 {
@@ -66,53 +40,19 @@ int				params(char *filebase, int count)
 	return (count == 1 ? res1 : res2);
 }
 
-int				countlength(char *field, int z)
-{
-	int count;
-
-	count = 0;
-	while (field[z] != ' ' || field[z] != '\0')
-	{
-		count++;
-		z++;
-	}
-	return (count);
-}
-
 void			calculatescale(t_info *base)
 {
-
+	while (base->scalex * base->width > WX && base->scalex > 0)
+		base->scalex -= 1;
+	while (base->scaley * base->heigth < -WY && base->scaley < 0)
+		base->scaley += 1;
+	if (ft_abs(base->scalex) < ft_abs(base->scaley))
+		base->scaley = -(base->scalex);
+	else
+		base->scalex = -(base->scaley);
 }
 
-char			**transport(char *field, int clines)
-{
-	char	**result;
-	int		x;
-	int		y;
-	int		z;
-	int		ccolumn;
-
-	x = 0;
-	y = 0;
-	z = 0;
-	if (!(result = (char**)malloc(sizeof(char *) * clines + 1)))
-		return (NULL);
-	while (field[z] != '\0')
-	{
-		ccolumn = countlength(field, z);
-		if (!(result[x] = (char*)malloc(sizeof(char) * ccolumn + 1)))
-			return (NULL);
-		while (y <= ccolumn)
-			result[x][y++] = field[z++];
-		y = 0;
-		result[x][ccolumn] = '\0';
-		x++;
-	}
-	result[x] = NULL;
-	return (result);
-}
-
-void			conversion(t_info *base, int x, int y, int flag)
+void			ft_conversion(t_info *base, int x, int y, int flag)
 {
 	size_t temp;
 
@@ -155,7 +95,7 @@ void			read(char *filebase, t_info *base, int fd, int x)
 		while (*result != NULL)
 		{
 			base->map[x][y].z = ft_atoi(*result);
-			FUNCTION(base, x, y, 0);
+			ft_conversion(base, x, y, 0);
 			base->map[x][y].zn = base->map[x][y].z;
 			y++;
 			result++;
@@ -164,7 +104,7 @@ void			read(char *filebase, t_info *base, int fd, int x)
 		x++;
 	}
 	close(fd);
-	FUNCTION(base, 0, 0, 1);
+	ft_conversion(base, 0, 0, 1);
 	calculatescale(base);
 }
 

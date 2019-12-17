@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:50:31 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/17 15:50:32 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/12/17 16:13:47 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		return (1);
 	check(ac);
 	parse(av[1], base);
-	base->mlx = mlx_new_window(base->mlx, 1000, 1000, "perfom");
+	base->mlx = mlx_new_window(base->mlx, WX, WY, "Perfom");
 	if (base->mlx == (void *)0)
 		error(2);
 }
