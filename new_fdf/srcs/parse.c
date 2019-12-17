@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/12/05 17:36:26 by tstripeb         ###   ########.fr       */
+/*   Updated: 2019/12/17 15:58:17 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ unsigned int	ft_abs(int number)
 	return (numbertwo);
 }
 
-int		countw(char *format)
+int				countw(char *format)
 {
 	int index;
 	int counter;
@@ -38,13 +38,13 @@ int		countw(char *format)
 	return (counter);
 }
 
-int		params(char *filebase, int count)
+int				params(char *filebase, int count)
 {
 	char		*line;
-	int		fd;
-	int		res1;
-	int		res2;
-	int		temp;
+	int			fd;
+	int			res1;
+	int			res2;
+	int			temp;
 
 	res1 = 0;
 	res2 = 0;
@@ -66,12 +66,12 @@ int		params(char *filebase, int count)
 	return (count == 1 ? res1 : res2);
 }
 
-int	countlength(char *field, int z)
+int				countlength(char *field, int z)
 {
 	int count;
 
 	count = 0;
-	while(field[z] != ' ' || field[z] != '\0')
+	while (field[z] != ' ' || field[z] != '\0')
 	{
 		count++;
 		z++;
@@ -79,18 +79,18 @@ int	countlength(char *field, int z)
 	return (count);
 }
 
-void	calculatescale(t_info *base)
+void			calculatescale(t_info *base)
 {
 
 }
 
-char	**transport(char *field, int clines)
+char			**transport(char *field, int clines)
 {
 	char	**result;
-	int	x;
-	int	y;
-	int	z;
-	int	ccolumn;
+	int		x;
+	int		y;
+	int		z;
+	int		ccolumn;
 
 	x = 0;
 	y = 0;
@@ -112,9 +112,37 @@ char	**transport(char *field, int clines)
 	return (result);
 }
 
-void	read(char *filebase, t_info *base, int fd, int x)
+void			conversion(t_info *base, int x, int y, int flag)
 {
-	int	y;
+	size_t temp;
+
+	if (flag == 0)
+	{
+		temp = ft_abs(base->map[x][y].z);
+		if ((!(base->less) && temp != 0) || (temp < base->less && temp != 0))
+			base->less = temp;
+	}
+	else
+	{
+		if (!(base->less))
+			base->less = 1;
+		while (x < base->height)
+		{
+			while (y < base->width)
+			{
+				base->map[x][y].z /= base->less;
+				base->map[x][y].zn /= base->less;
+				y++;
+			}
+			y = 0;
+			x++;
+		}
+	}
+}
+
+void			read(char *filebase, t_info *base, int fd, int x)
+{
+	int		y;
 	char	*line;
 	char	**result;
 
@@ -136,11 +164,11 @@ void	read(char *filebase, t_info *base, int fd, int x)
 		x++;
 	}
 	close(fd);
-	FUNCTION(base, 0 ,0, 1);
+	FUNCTION(base, 0, 0, 1);
 	calculatescale(base);
 }
 
-void	parse(char *filebase, t_info *base)
+void			parse(char *filebase, t_info *base)
 {
 	int fd;
 	int count;

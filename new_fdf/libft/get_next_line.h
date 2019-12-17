@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/17 15:50:31 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/17 15:50:32 by sazalee          ###   ########.fr       */
+/*   Created: 2019/05/09 18:45:11 by sazalee           #+#    #+#             */
+/*   Updated: 2019/12/17 16:02:04 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 32
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
+# include "libft.h"
 
-int	main(int ac, char **av)
-{
-	t_info	*base;
+int		get_next_line(const int fd, char **line);
 
-	count = 0;
-	if (!(base = (t_info *)malloc(sizeof(t_info))))
-		return (1);
-	check(ac);
-	parse(av[1], base);
-	base->mlx = mlx_new_window(base->mlx, 1000, 1000, "perfom");
-	if (base->mlx == (void *)0)
-		error(2);
-}
+#endif
