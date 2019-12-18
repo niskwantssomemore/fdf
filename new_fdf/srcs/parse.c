@@ -6,11 +6,12 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2019/12/17 16:53:17 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/12/18 15:32:57 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
+#include <stdio.h>
 
 int				params(char *filebase, int count)
 {
@@ -35,6 +36,7 @@ int				params(char *filebase, int count)
 		else if (res2 != temp)
 			error(1);
 		res1++;
+		free(line);
 	}
 	close(fd);
 	return (count == 1 ? res1 : res2);
@@ -44,7 +46,7 @@ void			calculatescale(t_info *base)
 {
 	while (base->scalex * base->width > WX && base->scalex > 0)
 		base->scalex -= 1;
-	while (base->scaley * base->heigth < -WY && base->scaley < 0)
+	while (base->scaley * base->height < -WY && base->scaley < 0)
 		base->scaley += 1;
 	if (ft_abs(base->scalex) < ft_abs(base->scaley))
 		base->scaley = -(base->scalex);
@@ -80,17 +82,17 @@ void			ft_conversion(t_info *base, int x, int y, int flag)
 	}
 }
 
-void			read(char *filebase, t_info *base, int fd, int x)
+void			ft_read(char *filebase, t_info *base, int fd, int x)
 {
 	int		y;
 	char	*line;
 	char	**result;
 
-	y = 0;
 	if ((fd = open(filebase, O_RDONLY)) == -1)
-		return (0);
+		return ;
 	while (get_next_line(fd, &line) > 0)
 	{
+		printf("kek2\n");
 		result = transport(line, countw(line));
 		while (*result != NULL)
 		{
@@ -102,6 +104,7 @@ void			read(char *filebase, t_info *base, int fd, int x)
 		}
 		y = 0;
 		x++;
+		free(line);
 	}
 	close(fd);
 	ft_conversion(base, 0, 0, 1);
@@ -130,8 +133,8 @@ void			parse(char *filebase, t_info *base)
 	base->map = (t_pnt **)malloc(sizeof(t_pnt *) * base->height);
 	while (count < base->height)
 	{
-		base->map[count] = (t_pnt *)malloc(sizeof(t_pnt) * base->widht);
+		base->map[count] = (t_pnt *)malloc(sizeof(t_pnt) * base->width);
 		count++;
 	}
-	read(filebase, base, fd, x);
+	ft_read(filebase, base, fd, x);
 }

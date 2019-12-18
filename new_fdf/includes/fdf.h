@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/17 16:12:17 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/12/18 13:22:12 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WY 720
 # include <mlx.h>
 # include <math.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_pnt
 {
@@ -41,5 +41,17 @@ typedef struct	s_info
 	size_t	less;
 	int		color;
 }				t_info;
+
+void			check(int ac);
+void			error(int er);
+int				params(char *filebase, int count);
+void			calculatescale(t_info *base);
+void			ft_conversion(t_info *base, int x, int y, int flag);
+void			ft_read(char *filebase, t_info *base, int fd, int x);
+void			parse(char *filebase, t_info *base);
+unsigned int	ft_abs(int number);
+int				countw(char *format);
+int				countlength(char *field, int z);
+char			**transport(char *field, int clines);
 
 #endif

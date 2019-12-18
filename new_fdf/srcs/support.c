@@ -6,11 +6,12 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:28:29 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/17 16:52:58 by sazalee          ###   ########.fr       */
+/*   Updated: 2019/12/18 15:33:00 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
+#include <stdio.h>
 
 unsigned int	ft_abs(int number)
 {
@@ -27,14 +28,17 @@ int				countw(char *format)
 
 	index = 0;
 	counter = 0;
-	while (format[index] != '\0')
+	while (format[index])
 	{
-		if (format[index] == ' ')
+		if (format[index] && format[index] != ' ')
+		{
+			while (format[index] && format[index] != ' ')
+				index++;
 			counter++;
-		index++;
+		}
+		else
+			index++;
 	}
-	if (counter > 0)
-		counter++;
 	return (counter);
 }
 
@@ -43,7 +47,7 @@ int				countlength(char *field, int z)
 	int count;
 
 	count = 0;
-	while (field[z] != ' ' || field[z] != '\0')
+	while (field[z] != '\0' && field[z] != ' ')
 	{
 		count++;
 		z++;
