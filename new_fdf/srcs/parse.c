@@ -36,7 +36,6 @@ int				params(char *filebase, int count)
 		else if (res2 != temp)
 			error(1);
 		res1++;
-		free(line);
 	}
 	close(fd);
 	return (count == 1 ? res1 : res2);
@@ -103,8 +102,8 @@ void			ft_read(char *filebase, t_info *base, int fd, int x)
 		}
 		y = 0;
 		x++;
-		free(line);
 	}
+	//FREE(result);
 	close(fd);
 	ft_conversion(base, 0, 0, 1);
 	calculatescale(base);

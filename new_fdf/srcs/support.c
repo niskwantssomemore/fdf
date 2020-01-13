@@ -30,7 +30,7 @@ int				countw(char *format)
 	counter = 0;
 	while (format[index])
 	{
-		if (format[index] && format[index] != ' ')
+		if (format[index] != ' ')
 		{
 			while (format[index] && format[index] != ' ')
 				index++;
@@ -47,7 +47,7 @@ int				countlength(char *field, int z)
 	int count;
 
 	count = 0;
-	while (field[z] != '\0' && field[z] != ' ')
+	while (field[z] != '\0' || field[z] != ' ')
 	{
 		count++;
 		z++;
