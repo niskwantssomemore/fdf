@@ -6,13 +6,26 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:50:31 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/18 15:31:30 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:53:32 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	main(int ac, char **av)
+void	ft_freetime(char **result)
+{
+	int flag;
+
+	flag = 0;
+	while (result[flag])
+	{
+		free(result[flag]);
+		flag++;
+	}
+	free(result);
+}
+
+int		main(int ac, char **av)
 {
 	t_info	*base;
 
