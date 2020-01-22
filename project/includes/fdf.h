@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/27 13:37:20 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/01/22 19:05:51 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,19 @@ typedef struct	s_info
 
 void			check(int ac);
 void			error(int er);
+void			ft_draw(t_info *base);
+void			ft_draw1(t_info *base, int x, int y);
+void			ft_draw2(t_info *base, int *coord1, int *coord2);
+void			pixelmls(t_info *base, int x, int y, int color);
+void			ft_freetime(char **result);
+void			mathdraw(t_info *base);
+int				mathy(t_info *base, int x, int y);
+int				mathx(t_info *base, int x, int y);
 int				params(char *filebase, int count);
 void			calculatescale(t_info *base);
 void			ft_conversion(t_info *base, int x, int y, int flag);
 void			ft_read(char *filebase, t_info *base, int fd, int x);
 void			parse(char *filebase, t_info *base);
-unsigned int	ft_abs(int number);
 int				countw(char *format);
 int				countlength(char *field, int z);
 char			**transport(char *field, int clines);

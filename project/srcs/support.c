@@ -6,20 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:28:29 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/18 15:33:00 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:02:48 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdio.h>
-
-unsigned int	ft_abs(int number)
-{
-	unsigned int	numbertwo;
-
-	numbertwo = (number < 0) ? (unsigned int)-number : number;
-	return (numbertwo);
-}
 
 int				countw(char *format)
 {

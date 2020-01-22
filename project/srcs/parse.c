@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/01/20 18:51:03 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/22 17:55:55 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			calculatescale(t_info *base)
 		base->scalex -= 1;
 	while (base->scaley * base->height < -WY && base->scaley < 0)
 		base->scaley += 1;
-	if (ft_abs(base->scalex) < ft_abs(base->scaley))
+	if (ft_modul(base->scalex) < ft_modul(base->scaley))
 		base->scaley = -(base->scalex);
 	else
 		base->scalex = -(base->scaley);
@@ -58,7 +58,7 @@ void			ft_conversion(t_info *base, int x, int y, int flag)
 
 	if (flag == 0)
 	{
-		temp = ft_abs(base->map[x][y].z);
+		temp = ft_modul(base->map[x][y].z);
 		if ((!(base->less) && temp != 0) || (temp < base->less && temp != 0))
 			base->less = temp;
 	}
