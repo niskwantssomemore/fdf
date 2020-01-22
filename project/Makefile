@@ -6,33 +6,31 @@
 #    By: sazalee <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 19:57:32 by sazalee           #+#    #+#              #
-#    Updated: 2019/12/18 13:32:19 by tstripeb         ###   ########.fr        #
+#    Updated: 2020/01/22 20:04:28 by sazalee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-FLAGS = -Wall -Wextra -Werror
+SRCS = srcs/check.c srcs/draw.c srcs/main.c srcs/mathdraw.c srcs/parse.c srcs/support.c
 
-ATTACH = -lmlx -framework OpenGL -framework AppKit -L./libft -lft
+FLAGS = -Wall -Werror -Wextra -I./includes
 
-SRC = srcs/*.c
-
-OBJ = $(subst .c,.o,$(SRC))
+OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	    make -C libft/
-		    gcc $(FLAGS) -I libft/ -c $(SRC)
-			    gcc $(FLAGS) -o $(NAME) $(SRC) $(ATTACH)
+$(NAME): $(OBJ)
+		make -C libft
+		gcc -o $(NAME) $(FLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit libft/libft.a
+		echo "Fdf done"
 
 clean:
-	    rm -f $(OBJ)
-		    make -C libft/ clean
+		make clean -C libft
+		rm -f $(OBJ)
 
 fclean: clean
-	    rm -f $(NAME)
-		    make -C libft/ fclean
+		make fclean -C libft
+		rm -f $(NAME)
 
 re: fclean all
