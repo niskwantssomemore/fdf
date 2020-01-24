@@ -37,4 +37,7 @@ int		main(int ac, char **av)
 	if (base->mlx == (void *)0)
 		error(2);
 	ft_draw(base);
+	mlx_key_hook(base->win, button1, base);
+	mlx_mouse_hook(base->win, mousemove, base);
+	mlx_loop(base->mlx);
 }
