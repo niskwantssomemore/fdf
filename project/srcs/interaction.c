@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/25 15:21:51 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/25 15:46:03 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		mousemove(int click, int x, int y, t_info *base)
 	return (1);
 }
 
-void	changeview(t_info base, int flag)
+void	changeview(t_info *base, int flag)
 {
 	int x;
 	int y;
