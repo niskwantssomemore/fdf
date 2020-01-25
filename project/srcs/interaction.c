@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/25 15:14:48 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/25 15:21:51 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ void	changeview(t_info base, int flag)
 
 int		button2(int keycode, t_info *base)
 {
-	if (keycode == -)
+	if (keycode == 78)
 	{
 		base->scalex -= 1;
 		base->scaley += 1;
 	}
-	if (keycode == s)
+	if (keycode == 1)
 	{
 		base->view -= 1;
 		changeview(base, -1);
 	}
-	if (keycode == r)
+	if (keycode == 15)
 		base->color = RED;
-	if (keycode == b)
+	if (keycode == 11)
 		base->color = BLUE;
-	if (keycode == g)
+	if (keycode == 5)
 		base->color = GREEN;
 	ft_draw(base);
 	return (1);
@@ -75,22 +75,22 @@ int		button2(int keycode, t_info *base)
 
 int		button1(int keycode, t_info *base)
 {
-	if (keycode == ESCAPE)
+	if (keycode == 53)
 		exit(0);
-	if (keycode == arrow)
+	if (keycode == 124)
 		base->posx += 30;
-	if (keycode == arrow)
+	if (keycode == 125)
 		base->posy += 30;
-	if (keycode == arrow)
+	if (keycode == 123)
 		base->posx -= 30;
-	if (keycode == arrow)
+	if (keycode == 126)
 		base->posy -= 30;
-	if (keycode == w)
+	if (keycode == 13)
 	{
 		base->view += 1;
 		changeview(base, 1);
 	}
-	if (keycode == +)
+	if (keycode == 69)
 	{
 		base->scalex += 1;
 		base->scaley -= 1;
