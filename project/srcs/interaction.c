@@ -6,13 +6,13 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/25 14:37:49 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/25 15:14:48 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	mousemove(int click, int x, int y, t_info *base)
+int		mousemove(int click, int x, int y, t_info *base)
 {
 	if (click == 1 && x && y)
 	{
@@ -49,9 +49,9 @@ void	changeview(t_info base, int flag)
 		y = 0;
 		x++;
 	}
-}		
+}
 
-int	button2(int keycode, t_info *base)
+int		button2(int keycode, t_info *base)
 {
 	if (keycode == -)
 	{
@@ -71,9 +71,9 @@ int	button2(int keycode, t_info *base)
 		base->color = GREEN;
 	ft_draw(base);
 	return (1);
-}	
+}
 
-int	button1(int keycode, t_info *base)
+int		button1(int keycode, t_info *base)
 {
 	if (keycode == ESCAPE)
 		exit(0);

@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/22 19:05:51 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/25 15:16:09 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FDF_H
 # define WX 1280
 # define WY 720
+# define RED 0x0000FF
+# define BLUE 0xFF0000
+# define GREEN 0x00FF00
 # include <mlx.h>
 # include <math.h>
 # include "../libft/libft.h"
@@ -60,5 +63,9 @@ void			parse(char *filebase, t_info *base);
 int				countw(char *format);
 int				countlength(char *field, int z);
 char			**transport(char *field, int clines);
+int				button1(int keycode, t_info *base);
+int				button2(int keycode, t_info *base);
+void			changeview(t_info base, int flag);
+int				mousemove(int click, int x, int y, t_info *base);
 
 #endif
