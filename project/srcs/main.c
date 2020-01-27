@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:50:31 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/22 18:24:49 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/27 15:44:35 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		main(int ac, char **av)
 		return (1);
 	check(ac);
 	parse(av[1], base);
-	base->mlx = mlx_new_window(base->mlx, WX, WY, "Perfom");
+	base->win = mlx_new_window(base->mlx, WX, WY, "Perfom");
 	if (base->mlx == (void *)0)
 		error(2);
 	ft_draw(base);

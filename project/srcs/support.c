@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:28:29 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/22 18:02:48 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/27 16:52:48 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				countlength(char *field, int z)
 	int count;
 
 	count = 0;
-	while (field[z] != '\0' || field[z] != ' ')
+	while (field[z] != '\0' && field[z] != ' ')
 	{
 		count++;
 		z++;
@@ -51,21 +51,22 @@ char			**transport(char *field, int clines)
 	char	**result;
 	int		x;
 	int		y;
-	int		z;
 	int		ccolumn;
 
 	x = 0;
 	y = 0;
-	z = 0;
 	if (!(result = (char**)malloc(sizeof(char *) * clines + 1)))
 		return (NULL);
-	while (field[z] != '\0')
+	clines = 0;
+	while (field[clines] != '\0')
 	{
-		ccolumn = countlength(field, z);
+		ccolumn = countlength(field, clines);
 		if (!(result[x] = (char*)malloc(sizeof(char) * ccolumn + 1)))
 			return (NULL);
-		while (y <= ccolumn)
-			result[x][y++] = field[z++];
+		while (y < ccolumn)
+			result[x][y++] = field[clines++];
+		while (field[clines] == ' ' && field[clines] != '\0')
+			clines++;
 		y = 0;
 		result[x][ccolumn] = '\0';
 		x++;
