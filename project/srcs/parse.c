@@ -6,12 +6,11 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/01/27 16:49:29 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/27 16:57:22 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdio.h>
 
 int				params(char *filebase, int count)
 {
