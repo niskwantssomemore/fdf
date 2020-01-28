@@ -18,7 +18,7 @@ int		mousemove(int click, int x, int y, t_info *base)
 	{
 		if (base->color == RED)
 			base->color = BLUE;
-		else if (click == BLUE)
+		else if (base->color == BLUE)
 			base->color = GREEN;
 		else
 			base->color = RED;

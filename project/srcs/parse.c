@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-#include <stdio.h>
 
 int				params(char *filebase, int count)
 {

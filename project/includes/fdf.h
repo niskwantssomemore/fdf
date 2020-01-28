@@ -12,8 +12,8 @@
 
 #ifndef FDF_H
 # define FDF_H
-# define WX 1280
-# define WY 720
+# define WX 1000
+# define WY 1000
 # define RED 0x0000FF
 # define BLUE 0xFF0000
 # define GREEN 0x00FF00
