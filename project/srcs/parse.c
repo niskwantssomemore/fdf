@@ -6,11 +6,12 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/01/27 16:57:22 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/28 15:58:22 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <stdio.h>
 
 int				params(char *filebase, int count)
 {
@@ -90,17 +91,16 @@ void			ft_read(char *filebase, t_info *base, int fd, int x)
 		return ;
 	while (get_next_line(fd, &line) > 0)
 	{
+		y = 0;
 		result = transport(line, countw(line));
-		while (*result != NULL)
+		while (result[y] != NULL)
 		{
-			base->map[x][y].z = ft_atoi(*result);
+			base->map[x][y].z = ft_atoi(result[y]);
 			ft_conversion(base, x, y, 0);
 			base->map[x][y].zn = base->map[x][y].z;
 			y++;
-			result++;
 		}
-		//ft_freetime(result);
-		y = 0;
+		ft_freetime(result);
 		x++;
 	}
 	close(fd);

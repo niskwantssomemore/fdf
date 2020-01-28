@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 18:45:17 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/27 15:45:42 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/28 15:58:24 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ void	ft_draw2(t_info *base, int *coord1, int *coord2)
 	delta[1] = ft_modul(coord2[1] - coord1[1]);
 	sign[0] = (coord2[0] - coord1[0] > 0 ? 1 : -1);
 	sign[1] = (coord2[1] - coord1[1] > 0 ? 1 : -1);
-	error[0] = (delta[0] - delta[1] > 0 ? delta[0] : -delta[1]) / 2;
+	error[0] = delta[0] - delta[1];
 	while (coord1[0] != coord2[0] || coord1[1] != coord2[1])
 	{
 		pixelmls(base, coord1[0], coord1[1], base->color);
-		error[1] = error[0];
-		if (error[1] > -delta[0])
+		error[1] = error[0] * 2;
+		if (error[1] > -delta[1])
 		{
 			error[0] -= delta[1];
 			coord1[0] += sign[0];
 		}
-		if (error[1] < delta[1])
+		if (error[1] < delta[0])
 		{
 			error[0] += delta[0];
 			coord1[1] += sign[1];

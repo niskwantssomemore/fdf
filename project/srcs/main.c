@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:50:31 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/27 15:44:35 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/01/28 15:58:19 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_freetime(char **result)
 	flag = 0;
 	while (result[flag])
 	{
-		free(result[flag]);
+		ft_strdel(&result[flag]);
 		flag++;
 	}
-	free(result);
+	ft_strdel(result);
 }
 
 int		main(int ac, char **av)
