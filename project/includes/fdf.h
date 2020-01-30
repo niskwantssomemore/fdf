@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/28 14:34:11 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/01/30 17:22:34 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			check(int ac);
 void			error(int er);
 void			ft_draw(t_info *base);
 void			ft_draw1(t_info *base, int x, int y);
-void			ft_draw2(t_info *base, int *coord1, int *coord2);
+void			ft_draw2(t_info *base, int *temp1, int *coord2);
 void			pixelmls(t_info *base, int x, int y, int color);
 void			ft_freetime(char **result);
 void			mathdraw(t_info *base);

@@ -6,24 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:50:31 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/28 15:58:19 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:51:34 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	ft_freetime(char **result)
-{
-	int flag;
-
-	flag = 0;
-	while (result[flag])
-	{
-		ft_strdel(&result[flag]);
-		flag++;
-	}
-	ft_strdel(result);
-}
 
 int		main(int ac, char **av)
 {

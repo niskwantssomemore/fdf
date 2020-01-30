@@ -6,11 +6,24 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:28:29 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/28 15:48:04 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/01/30 12:51:20 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void			ft_freetime(char **result)
+{
+	int flag;
+
+	flag = 0;
+	while (result[flag])
+	{
+		ft_strdel(&result[flag]);
+		flag++;
+	}
+	ft_strdel(result);
+}
 
 int				countw(char *format)
 {
