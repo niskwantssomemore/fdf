@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/02/06 04:57:29 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/02/06 05:07:23 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	print_menu(t_info *base)
 	mlx_string_put(mlx, win, 15, y += 35, 0xEAEAEA, "Zoom: Scroll or +/-");
 	mlx_string_put(mlx, win, 15, y += 30, 0xEAEAEA, "Move: Arrows");
 	mlx_string_put(mlx, win, 15, y += 30, 0xEAEAEA, "Rotate: Press & Move");
-	mlx_string_put(mlx, win, 57, y += 25, 0xEAEAEA, "ISO: I Key");
 }
 
 int		mousemove(int click, int x, int y, t_info *base)
