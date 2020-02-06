@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/02/06 04:25:20 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/02/06 05:13:59 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct	s_info
 	int		color;
 }				t_info;
 
-void			print_menu(t_info *base);
+void			menuer(t_info *base);
 void			check(int ac);
 void			error(int er);
 void			ft_draw(t_info *base);

@@ -6,13 +6,13 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/02/06 05:07:23 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/02/06 05:13:22 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	print_menu(t_info *base)
+void	menuer(t_info *base)
 {
 	int		y;
 	void	*mlx;
