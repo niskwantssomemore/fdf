@@ -6,11 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:28:29 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/30 12:51:20 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 20:15:55 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void			ft_freetime(char **result)
 {

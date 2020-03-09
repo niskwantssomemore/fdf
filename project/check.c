@@ -6,11 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:50:19 by sazalee           #+#    #+#             */
-/*   Updated: 2019/12/18 13:54:01 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/09 20:15:15 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 void	check(int ac)
 {

@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 19:23:00 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 20:17:39 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define GREEN 0x00FF00
 # include <mlx.h>
 # include <math.h>
-# include "../libft/libft.h"
+# include "libft.h"
 
 typedef struct	s_pnt
 {
@@ -46,6 +46,7 @@ typedef struct	s_info
 	int		color;
 }				t_info;
 
+void			randomcolor(t_info *base);
 void			check(int ac);
 void			error(int er);
 void			ft_draw(t_info *base);

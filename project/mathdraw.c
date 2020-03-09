@@ -6,11 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:03:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 19:19:38 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 20:15:35 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 int		mathx(t_info *base, int x, int y)
 {

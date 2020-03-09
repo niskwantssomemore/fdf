@@ -6,11 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 19:22:10 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 20:15:45 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "fdf.h"
 
 int		mousemove(int click, int x, int y, t_info *base)
 {
@@ -102,5 +102,7 @@ int		button1(int keycode, t_info *base)
 		base->scalex += 1;
 		base->scaley -= 1;
 	}
+	if (keycode == 8)
+		randomcolor(base);
 	return (button2(keycode, base));
 }
