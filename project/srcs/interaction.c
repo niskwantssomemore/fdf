@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 16:58:38 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 17:52:29 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		mousemove(int click, int x, int y, t_info *base)
 	return (1);
 }
 
-void	changeview(t_info *base, int flag)
+void	changeview(t_info *base)
 {
 	int x;
 	int y;
@@ -61,7 +61,7 @@ int		button2(int keycode, t_info *base)
 	if (keycode == 1)
 	{
 		base->view -= 1;
-		changeview(base, -1);
+		changeview(base);
 	}
 	if (keycode == 15)
 		base->color = RED;
@@ -88,7 +88,7 @@ int		button1(int keycode, t_info *base)
 	if (keycode == 13)
 	{
 		base->view += 1;
-		changeview(base, 1);
+		changeview(base);
 	}
 	if (keycode == 69)
 	{

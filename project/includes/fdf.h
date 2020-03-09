@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 16:57:56 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 17:52:48 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				countlength(char *field, int z);
 char			**transport(char *field, int clines);
 int				button1(int keycode, t_info *base);
 int				button2(int keycode, t_info *base);
-void			changeview(t_info *base, int flag);
+void			changeview(t_info *base);
 int				mousemove(int click, int x, int y, t_info *base);
 
 #endif
