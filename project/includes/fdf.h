@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 16:11:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 17:52:48 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 19:23:00 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_info
 	int		height;
 	int		width;
 	int		view;
+	int		flag;
 	size_t	less;
 	int		color;
 }				t_info;

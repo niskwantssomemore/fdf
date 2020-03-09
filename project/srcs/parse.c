@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:00:12 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/01/30 17:12:53 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 19:22:44 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void			parse(char *filebase, t_info *base)
 	base->posx = 400;
 	base->posy = 400;
 	base->view = 1;
+	base->flag = 0;
 	base->color = 0xFFFFFF;
 	base->height = params(filebase, 1);
 	base->width = params(filebase, 2);

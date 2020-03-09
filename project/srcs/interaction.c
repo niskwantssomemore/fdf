@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/03/09 17:52:29 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 19:22:10 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ int		button2(int keycode, t_info *base)
 		base->color = BLUE;
 	if (keycode == 5)
 		base->color = GREEN;
+	if (keycode == 35)
+	{
+		if (base->flag == 1)
+			base->flag = 0;
+		else
+			base->flag = 1;
+	}
 	ft_draw(base);
 	return (1);
 }

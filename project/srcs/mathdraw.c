@@ -6,7 +6,7 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 18:03:35 by sazalee           #+#    #+#             */
-/*   Updated: 2020/01/30 15:19:39 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 19:19:38 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int		mathx(t_info *base, int x, int y)
 {
 	double result;
 
-	result = (M_SQRT2 / 2) * (y - x);
+	if (base->flag == 1)
+		result = y;
+	else
+		result = (M_SQRT2 / 2) * (y - x);
 	result = base->scalex * result;
 	return ((int)result);
 }
@@ -25,8 +28,16 @@ int		mathy(t_info *base, int x, int y)
 {
 	double result;
 
-	result = (sqrt(3 / 2) * base->map[x][y].z);
-	result = result - (1 / sqrt(6) * (x + y));
+	if (base->flag == 1)
+	{
+		result = base->map[x][y].z;
+		result = result - x;
+	}
+	else
+	{
+		result = (sqrt(3 / 2) * base->map[x][y].z);
+		result = result - (1 / sqrt(6) * (x + y));
+	}
 	result = base->scaley * result;
 	return ((int)result);
 }
