@@ -6,26 +6,11 @@
 /*   By: sazalee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 14:30:11 by sazalee           #+#    #+#             */
-/*   Updated: 2020/02/06 05:13:22 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/09 16:58:38 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-void	menuer(t_info *base)
-{
-	int		y;
-	void	*mlx;
-	void	*win;
-
-	y = 0;
-	mlx = base->mlx;
-	win = base->win;
-	mlx_string_put(mlx, win, 65, y += 20, 0xEAEAEA, "How to Use");
-	mlx_string_put(mlx, win, 15, y += 35, 0xEAEAEA, "Zoom: Scroll or +/-");
-	mlx_string_put(mlx, win, 15, y += 30, 0xEAEAEA, "Move: Arrows");
-	mlx_string_put(mlx, win, 15, y += 30, 0xEAEAEA, "Rotate: Press & Move");
-}
 
 int		mousemove(int click, int x, int y, t_info *base)
 {
