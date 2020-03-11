@@ -187,6 +187,8 @@ int	main(int ac, char **av)
 
 	base = (t_info*)malloc(sizeof(t_info));
 	reader(base, av[1]);
+	base->movex = 0;
+	base->movey = 0;
 	base->mlx_ptr = mlx_init();
 	base->win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "FDF");
 	base->zoom = 20;
