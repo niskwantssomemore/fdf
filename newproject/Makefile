@@ -6,13 +6,13 @@
 #    By: sazalee <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 19:57:32 by sazalee           #+#    #+#              #
-#    Updated: 2020/03/09 20:34:06 by sazalee          ###   ########.fr        #
+#    Updated: 2020/03/11 22:17:18 by tstripeb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = main.c
+SRCS = main.c read.c draw.c
 
 FLAGS = -Wall -Werror -Wextra
 
