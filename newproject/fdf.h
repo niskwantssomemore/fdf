@@ -26,6 +26,6 @@ void	algorithm(t_info *base, float x, float y, float xn ,float yn);
 float	modulerb(float xtemp, float ytemp);
 void	draw(t_info *base);
 void	isometric(float *x, float *y, int z);
-int	interaction(t_info *base, int key);
+int	interaction(int key, t_info *base);
 
 #endif

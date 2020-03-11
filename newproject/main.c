@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-int	interaction(t_info *base, int key)
+int	interaction(int key, t_info *base)
 {
 	if (key == 126)
 		base->movey -= 10;
