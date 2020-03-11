@@ -71,10 +71,10 @@ void	algorithm(t_info *base, float x, float y, float xn ,float yn)
 	base->color = (z || zn) ? 0x0000FF : 0xFFFFFF;
 	isometric(&x, &y, z);
 	isometric(&xn, &yn, zn);
-	x += movex;
-	xn += movex;
-	y += movey;
-	yn += movey;
+	x += base->movex;
+	xn += base->movex;
+	y += base->movey;
+	yn += base->movey;
 	xtemp = xn - x;
 	ytemp = yn - y;
 	temp = modulerb(xtemp, ytemp);
@@ -105,7 +105,7 @@ void	matrixer(int *matrixl, char *line)
 	free(temp);
 }
 
-int	ft_widthertwo(char const *str, char c)
+int	widthertwo(char const *str, char c)
 {
 	int	i;
 	int	words;
@@ -130,7 +130,7 @@ int	widther(char *map)
 	char	*line;
 	int	res;
 
-	fd = open(map, o_RDONLY, 0);
+	fd = open(map, O_RDONLY, 0);
 	get_next_line(fd, &line);
 	res = widthertwo(line, ' ');
 	free(line);
@@ -145,7 +145,6 @@ int	heighter(char *map)
 	int	res;
 
 	res = 0;
-	line = NULL;
 	fd = open(map, O_RDONLY, 0);
 	while(get_next_line(fd, &line))
 	{
@@ -163,7 +162,6 @@ void	reader(t_info *base, char *map)
 	char	*line;
 
 	x = 0;
-	line = NULL;
 	base->h = heighter(map);
 	base->w = widther(map);
 	base->matrix = (int **)malloc(sizeof(int*) * (base->h + 1));
@@ -190,7 +188,7 @@ int	main(int ac, char **av)
 	base->movex = 0;
 	base->movey = 0;
 	base->mlx_ptr = mlx_init();
-	base->win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "FDF");
+	base->win_ptr = mlx_new_window(base->mlx_ptr, 1000, 1000, "FDF");
 	base->zoom = 20;
 	draw(base);
 	mlx_key_hook(base->win_ptr, interaction, base);

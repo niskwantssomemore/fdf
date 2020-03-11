@@ -20,7 +20,7 @@ typedef struct	s_info
 void	reader(t_info *base, char *map);
 int	heighter(char *map);
 int	widther(char *map);
-int	ft_widthertwo(char const *str, char c);
+int	widthertwo(char const *str, char c);
 void	matrixer(int *matrixl, char *line);
 void	algorithm(t_info *base, float x, float y, float xn ,float yn);
 float	modulerb(float xtemp, float ytemp);
