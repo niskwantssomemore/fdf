@@ -1,5 +1,47 @@
 #include "fdf.h"
 
+int	interaction(t_info *base, int key)
+{
+	if (key == 126)
+		base->movey -= 10;
+	if (key == 125)
+		base->movey += 10;
+	if (key == 123)
+		base->movex -= 10;
+	if (key == 124)
+		base->movex += 10;
+	mlx_clear_window(base->mlx_ptr, base->win_ptr);
+	draw(base);
+	return (0);
+}
+
+void	isometric(float *x, float *y, int z)
+{
+	*x = (*x - *y) * cos(0.8);
+	*y = (*x + *y) * sin(0.8) - z;
+}
+
+void	draw(t_info *base)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < base->h)
+	{
+		x = 0;
+		while (x < base->w)
+		{
+			if (x < base->w - 1)
+				algorithm(base, x, y, x + 1, y);
+			if (y < base->h - 1)
+				algorithm(base, x, y, x, y + 1);
+			x++;
+		}
+		y++;
+	}
+}
+
 float	modulerb(float xtemp, float ytemp)
 {
 	if (xtemp < 0)
@@ -12,12 +54,27 @@ float	modulerb(float xtemp, float ytemp)
 		return (ytemp);
 }
 
-void	draw(t_info *base, float x, float y, float xn ,float yn)
+void	algorithm(t_info *base, float x, float y, float xn ,float yn)
 {
 	float	xtemp;
 	float	ytemp;
-	int	temp;;
+	int	temp;
+	int	z;
+	int	zn;
 
+	z = base->matrix[(int)y][(int)x];
+	zn = base->matrix[(int)yn][(int)xn];
+	x *= base->zoom;
+	y *= base->zoom;
+	xn *= base->zoom;
+	yn *= base->zoom;
+	base->color = (z || zn) ? 0x0000FF : 0xFFFFFF;
+	isometric(&x, &y, z);
+	isometric(&xn, &yn, zn);
+	x += movex;
+	xn += movex;
+	y += movey;
+	yn += movey;
 	xtemp = xn - x;
 	ytemp = yn - y;
 	temp = modulerb(xtemp, ytemp);
@@ -25,7 +82,7 @@ void	draw(t_info *base, float x, float y, float xn ,float yn)
 	ytemp /= temp;
 	while ((int)(x - xn) || (int)(y - yn))
 	{
-		mlx_pixel_put(base->mlx_ptr, base->win_ptr, x, y, 0xFFFFFF);
+		mlx_pixel_put(base->mlx_ptr, base->win_ptr, x, y, base->color);
 		x = xtemp + x;
 		y = ytemp + y;
 	}
@@ -132,7 +189,8 @@ int	main(int ac, char **av)
 	reader(base, av[1]);
 	base->mlx_ptr = mlx_init();
 	base->win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "FDF");
-	draw(base, 10, 10, 600, 300);
-	mlx_key_hook(base->win_ptr, deal_key, NULL);
+	base->zoom = 20;
+	draw(base);
+	mlx_key_hook(base->win_ptr, interaction, base);
 	mlx_loop(base->mlx_ptr);
 }

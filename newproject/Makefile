@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-SRCS = check.c draw.c main.c mathdraw.c parse.c support.c interaction.c
+SRCS = main.c
 
 FLAGS = -Wall -Werror -Wextra
 
