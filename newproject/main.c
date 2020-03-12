@@ -6,36 +6,22 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:46:25 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/11 22:35:03 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/12 17:48:24 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	interaction(int key, t_info *base)
+float	modulerb(float xtemp, float ytemp)
 {
-	if (key == 53)
-		exit(0);
-	if (key == 126)
-		base->movey -= 10;
-	if (key == 125)
-		base->movey += 10;
-	if (key == 123)
-		base->movex -= 10;
-	if (key == 124)
-		base->movex += 10;
-	if (key == 69 || key == 24)
-		base->zoom += 1;
-	if (key == 78 || key == 27)
-		base->zoom > 0 ? base->zoom-- : base->zoom;
-	if (key == 13)
-		base->z_scale += 1;
-	if (key == 1)
-		base->z_scale -= 1;
-	mlx_clear_window(base->mlx_ptr, base->win_ptr);
-	draw(base);
-	printf("%d\n", key);
-	return (0);
+	if (xtemp < 0)
+		xtemp = -xtemp;
+	if (ytemp < 0)
+		ytemp = -ytemp;
+	if (xtemp > ytemp)
+		return (xtemp);
+	else
+		return (ytemp);
 }
 
 void	messaggerror(char *str)
@@ -55,6 +41,9 @@ void	basedefault(t_info *base)
 	base->z_scale = 1;
 	base->xn = 0;
 	base->yn = 0;
+	base->zn = 0;
+	base->iso = 1;
+	base->angle = 1;
 }
 
 int		main(int ac, char **av)
@@ -63,11 +52,9 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		messaggerror("usage: ./fdf map.fdf\n");
-	if(!(base = (t_info *)malloc(sizeof(t_info))))
+	if (!(base = (t_info *)malloc(sizeof(t_info))))
 		return (0);
-	printf("2\n");
 	reader(base, av[1]);
-	printf("3\n");
 	basedefault(base);
 	draw(base);
 	mlx_key_hook(base->win_ptr, interaction, base);

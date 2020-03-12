@@ -6,49 +6,41 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:19:26 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/11 22:34:56 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/12 17:48:26 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	isometric(float *x, float *y, int z)
+void	isometric(float *x, float *y, int z, t_info *base)
 {
-	*x = (*x - *y) * cos(1);
-	*y = (*y + *x) * sin(1) - z;
+	*x = (*x - *y) * cos(base->angle);
+	*y = (*y + *x) * sin(base->angle) - z;
+	base->xn = (base->xn - base->yn) * cos(base->angle);
+	base->yn = (base->yn + base->xn) * sin(base->angle) - base->zn;
 }
 
-float	modulerb(float xtemp, float ytemp)
-{
-	if (xtemp < 0)
-		xtemp = -xtemp;
-	if (ytemp < 0)
-		ytemp = -ytemp;
-	if (xtemp > ytemp)
-		return (xtemp);
-	else
-		return (ytemp);
-}
-
-void	setparams(t_info *base, float *x, float *y)
+void	setparams(t_info *base, float *x, float *y, int z)
 {
 	*x *= base->zoom;
 	*y *= base->zoom;
 	base->xn *= base->zoom;
 	base->yn *= base->zoom;
+	if (base->iso == 1)
+		isometric(x, y, z, base);
 	*x += base->movex;
 	base->xn += base->movex;
 	*y += base->movey;
 	base->yn += base->movey;
 }
 
-void	basecolor(int z, int zn, t_info *base)
+void	basecolor(int z, t_info *base)
 {
-	if (!z && !zn)
+	if (!z && !base->zn)
 		base->color = 0x00FF00;
-	if ((!z && zn) || (z && !zn))
+	if ((!z && base->zn) || (z && !base->zn))
 		base->color = 0x8B4513;
-	if (z && zn && z == zn)
+	if (z && base->zn && z == base->zn)
 		base->color = 0xFFFFFF;
 }
 
@@ -58,16 +50,13 @@ void	algorithm(t_info *base, float x, float y)
 	float	ytemp;
 	int		temp;
 	int		z;
-	int		zn;
 
 	z = base->matrix[(int)y][(int)x];
-	zn = base->matrix[(int)base->yn][(int)base->xn];
+	base->zn = base->matrix[(int)base->yn][(int)base->xn];
 	z *= base->z_scale;
-	zn *= base->z_scale;
-	setparams(base, &x, &y);
-	basecolor(z, zn, base);
-	isometric(&x, &y, z);
-	isometric(&base->xn, &base->yn, zn);
+	base->zn *= base->z_scale;
+	setparams(base, &x, &y, z);
+	basecolor(z, base);
 	xtemp = base->xn - x;
 	ytemp = base->yn - y;
 	temp = modulerb(xtemp, ytemp);
@@ -87,7 +76,6 @@ void	draw(t_info *base)
 	int y;
 
 	y = 0;
-	printf("1\n");
 	while (y < base->h)
 	{
 		x = 0;
