@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:57:19 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/13 17:23:54 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/13 17:59:04 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ int		interaction(int key, t_info *base)
 		free(base->matrix);
 		exit(0);
 	}
-	printf("%d\n", key);
 	return (0);
 }

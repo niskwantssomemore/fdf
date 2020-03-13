@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:10:24 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/13 17:24:10 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/13 17:58:16 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,11 @@ void	reader(t_info *base, char *map)
 	base->h = heighterw(map, 1);
 	base->w = heighterw(map, 2);
 	base->matrix = (int **)malloc(sizeof(int *) * base->h);
-	while (x <= base->h)
-		base->matrix[x++] = (int *)malloc(sizeof(int) * base->w);
+	while (x < base->h)
+	{
+		base->matrix[x] = (int *)malloc(sizeof(int) * base->w);
+		x++;
+	}
 	x = 0;
 	if ((fd = open(map, O_RDONLY, 0)) == -1)
 		messaggerror("File does not exist!!!\n");
