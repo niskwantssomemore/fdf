@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:19:26 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/12 17:48:26 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/13 17:24:08 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ void	setparams(t_info *base, float *x, float *y, int z)
 
 void	basecolor(int z, t_info *base)
 {
-	if (!z && !base->zn)
-		base->color = 0x00FF00;
-	if ((!z && base->zn) || (z && !base->zn))
-		base->color = 0x8B4513;
-	if (z && base->zn && z == base->zn)
-		base->color = 0xFFFFFF;
+	if (!base->flag)
+	{
+		if (!z && !base->zn)
+			base->color = 0x00FF00;
+		if ((!z && base->zn) || (z && !base->zn) || (base->zn && z
+				&& z != base->zn))
+			base->color = 0x8B4513;
+		if (base->zn && z == base->zn)
+			base->color = 0xFFFFFF;
+	}
 }
 
 void	algorithm(t_info *base, float x, float y)
@@ -64,7 +68,10 @@ void	algorithm(t_info *base, float x, float y)
 	ytemp /= temp;
 	while ((int)(x - base->xn) || (int)(y - base->yn))
 	{
-		mlx_pixel_put(base->mlx_ptr, base->win_ptr, x, y, base->color);
+		if (!((int)(x + xtemp - base->xn) || (int)(y + ytemp - base->yn)))
+			mlx_pixel_put(base->mlx_ptr, base->win_ptr, x, y, 0xFFFFFF);
+		else
+			mlx_pixel_put(base->mlx_ptr, base->win_ptr, x, y, base->color);
 		x = xtemp + x;
 		y = ytemp + y;
 	}

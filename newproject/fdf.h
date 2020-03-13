@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 17:17:36 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/12 17:17:38 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/13 17:21:33 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_info
 	int			color;
 	int			movex;
 	int			movey;
+	int			flag;
 	int			z_scale;
 	int			**matrix;
 	float		xn;
@@ -55,5 +56,6 @@ int				interaction(int key, t_info *base);
 int				is_key(int key);
 void			do_key(int key, t_info *base);
 void			cleaner(char **input);
+void			randomcolor(t_info *base);
 
 #endif

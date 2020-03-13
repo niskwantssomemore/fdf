@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:46:25 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/12 17:48:24 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/13 17:11:42 by tstripeb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	basedefault(t_info *base)
 	base->zn = 0;
 	base->iso = 1;
 	base->angle = 1;
+	base->flag = 0;
 }
 
 int		main(int ac, char **av)
@@ -59,4 +60,5 @@ int		main(int ac, char **av)
 	draw(base);
 	mlx_key_hook(base->win_ptr, interaction, base);
 	mlx_loop(base->mlx_ptr);
+	return (0);
 }
