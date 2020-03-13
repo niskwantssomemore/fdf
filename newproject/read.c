@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 18:10:24 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/13 17:58:16 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/13 20:40:57 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int		heighterw(char *map, int flag)
 
 	res1 = 0;
 	res = 0;
+	if ((fd = open(map, O_DIRECTORY) > 0))
+		messaggerror("Not file!!!\n");
 	if ((fd = open(map, O_RDONLY, 0)) == -1)
 		messaggerror("File does not exist!!!\n");
 	while (get_next_line(fd, &line))
@@ -101,6 +103,8 @@ void	reader(t_info *base, char *map)
 		x++;
 	}
 	x = 0;
+	if ((fd = open(map, O_DIRECTORY) > 0))
+		messaggerror("Not file!!!\n");
 	if ((fd = open(map, O_RDONLY, 0)) == -1)
 		messaggerror("File does not exist!!!\n");
 	while (get_next_line(fd, &line))
