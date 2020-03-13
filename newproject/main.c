@@ -6,11 +6,17 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:46:25 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/13 17:11:42 by tstripeb         ###   ########.fr       */
+/*   Updated: 2020/03/13 21:02:35 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int		exit_x(void)
+{
+	exit(1);
+	return (0);
+}
 
 float	modulerb(float xtemp, float ytemp)
 {
@@ -59,6 +65,7 @@ int		main(int ac, char **av)
 	basedefault(base);
 	draw(base);
 	mlx_key_hook(base->win_ptr, interaction, base);
+	mlx_hook(base->win_ptr, 17, 1L << 17, exit_x, NULL);
 	mlx_loop(base->mlx_ptr);
 	return (0);
 }

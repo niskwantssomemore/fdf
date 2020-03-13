@@ -6,7 +6,7 @@
 /*   By: tstripeb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 17:17:36 by tstripeb          #+#    #+#             */
-/*   Updated: 2020/03/13 17:58:24 by sazalee          ###   ########.fr       */
+/*   Updated: 2020/03/13 21:03:25 by sazalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ int				is_key(int key);
 void			do_key(int key, t_info *base);
 void			cleaner(char **input);
 void			randomcolor(t_info *base);
+int				exit_x(void);
 
 #endif
